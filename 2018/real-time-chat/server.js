@@ -1,17 +1,34 @@
-const express = require('express')
+const express = require('express')//()
+const app = express()
+const server = require('http').Server(app)
+const routes = require('./server/routes')
+const io = require('socket.io')(server)
 const next = require('next')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
-const handle = app.getRequestHandler()
+const nextApp = next({ dev })
+const handle = nextApp.getRequestHandler()
+const bodyParser = require('body-parser')
 
-app.prepare()
+nextApp.prepare()
 .then(() => {
-  const server = express()
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({
+    extended: true
+  }))
 
-  server.get('*', (req, res) => {
+  app.use('/api/', routes, (err) => {
+    if (err) throw err
+  })
+  app.get('*', (req, res) => {
     return handle(req, res)
+  })
+
+  io.on('connect', socket => {
+    socket.emit('now', {
+      message: 'CimaChat'
+    })
   })
 
   server.listen(port, (err) => {
