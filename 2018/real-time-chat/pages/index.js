@@ -1,26 +1,25 @@
 import ChatBox from '../components/ChatBox'
 import App from '../components/App'
-import {Container, Row, Col} from 'react-grid-system'
+import { Row, Col} from 'react-grid-system'
 import { Component } from 'react'
 import io from 'socket.io-client'
-const socket = io('http://localhost:3000');
+const socket = io('http://localhost:3000')
 
 export default class extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       userCount: 'No users',
       username: '',
-      onlineUsers:['Cimadev'],
+      onlineUsers: ['Cimadev'],
       messages: [],
       connected: false,
       userTyping: ''
     }
     this.handleUsernameChange = this.handleUsernameChange.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
-
   }
-  componentDidMount() {
+  componentDidMount () {
     socket.on('login', (data) => {
       this.setState({
         userCount: data.userCount,
@@ -46,7 +45,7 @@ export default class extends Component {
     socket.on('new message', (data) => {
       console.log('new message arrived')
       this.setState({
-        messages: data.msgDb,
+        messages: data.msgDb
       })
     })
     socket.on('typing', (data) => {
@@ -61,7 +60,7 @@ export default class extends Component {
     })
     socket.on('send message', (data) => {
       this.setState({
-        messages: data.msgDb,
+        messages: data.msgDb
       })
     })
   }
@@ -77,30 +76,30 @@ export default class extends Component {
     console.log(`User ${this.state.username} logged in`)
     socket.emit('add user', this.state.username)
   }
-  render() {
+  render () {
     return (
       <App>
         <Row style={{marginLeft: 0, marginRight: 0}}>
           <Col xs={8} md={8} style={{background: '#266e34', margin: 0}}>
-            <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages}/>
+            <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
           </Col>
           <Col xs={4} md={4} style={{background: 'white', margin: 0}}>
-              <Row>
-                <h1>Username</h1>
-                <input value={this.state.username} onChange={e => this.handleUsernameChange(e)} />
-                <button onClick={this.handleLogin}>Login</button>
-              </Row>
+            <Row>
+              <h1>Username</h1>
+              <input value={this.state.username} onChange={e => this.handleUsernameChange(e)} />
+              <button onClick={this.handleLogin}>Login</button>
+            </Row>
             <div style={{widt: '100%', height: '100%', background: 'white'}}>
-            <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
+              <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
 
-            {
-              this.state.onlineUsers.map((username, key) => {
-                return (
-                  <li key={key}>{username}</li>
-                )
-              })
-            }
-            <h2>User typing: {this.state.userTyping}</h2>
+              {
+                this.state.onlineUsers.map((username, key) => {
+                  return (
+                    <li key={key}>{username}</li>
+                  )
+                })
+              }
+              <h2>User typing: {this.state.userTyping}</h2>
             </div>
           </Col>
         </Row>

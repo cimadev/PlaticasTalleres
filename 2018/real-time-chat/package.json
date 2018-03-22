@@ -7,7 +7,8 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "mon": "nodemon server.js"
+    "mon": "nodemon server.js",
+    "test": "standard && node server.js"
   },
   "keywords": [],
   "author": "",

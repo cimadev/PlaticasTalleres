@@ -2,12 +2,12 @@ import { Component } from 'react'
 import io from 'socket.io-client'
 
 export default class Text extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       userCount: 'No users',
       username: '',
-      onlineUsers:['Cimadev'],
+      onlineUsers: ['Cimadev'],
       messages: [],
       msgInput: '',
       typing: false,
@@ -21,7 +21,7 @@ export default class Text extends Component {
     this.updateTyping = this.updateTyping.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.socket = io()
     this.socket.on('login', (data) => {
       this.setState({
@@ -47,12 +47,12 @@ export default class Text extends Component {
     })
     this.socket.on('send message', (data) => {
       this.setState({
-        messages: data.msgDb,
+        messages: data.msgDb
       })
     })
     this.socket.on('new message', (data) => {
       this.setState({
-        messages: data.msgDb,
+        messages: data.msgDb
       })
     })
     this.socket.on('typing', (data) => {
@@ -67,19 +67,19 @@ export default class Text extends Component {
     })
   }
 
-  handleChange(e) {
+  handleChange (e) {
     this.setState({
       username: e.target.value
     })
   }
 
-  handleSubmit(e) {
+  handleSubmit (e) {
     console.log(`User ${this.state.username} logged in`)
     e.preventDefault()
     this.socket.emit('add user', this.state.username)
   }
 
-  handleMessageChange(e) {
+  handleMessageChange (e) {
     e.preventDefault()
     this.updateTyping()
     this.setState({
@@ -87,18 +87,18 @@ export default class Text extends Component {
     })
   }
 
-  sendMessage() {
+  sendMessage () {
     this.socket.emit('new message', this.state.msgInput)
     this.setState({
       msgInput: ''
     })
   }
 
-  updateTyping() {
+  updateTyping () {
     console.log('setting typer')
-    let typingMaxTime = 600 //ms
-    if(this.state.connected) {
-      if(!this.state.typing) {
+    let typingMaxTime = 600 // ms
+    if (this.state.connected) {
+      if (!this.state.typing) {
         this.setState({
           typing: true
         })
@@ -107,9 +107,9 @@ export default class Text extends Component {
       let lastTypingTime = (new Date()).getTime()
       setTimeout(() => {
         let typingTimer = (new Date().getTime())
-        let timeDiff = typingTimer- lastTypingTime
+        let timeDiff = typingTimer - lastTypingTime
         if (timeDiff >= typingMaxTime && this.state.typing) {
-          this.socket.emit('stop typing');
+          this.socket.emit('stop typing')
           this.setState({
             typing: false
           })
@@ -118,14 +118,14 @@ export default class Text extends Component {
     }
   }
 
-  render() {
+  render () {
     return (
       <div>
         CimaChat - {this.state.userCount} online
-        <input value={this.state.username} onChange={e => this.handleChange(e)}/>
+        <input value={this.state.username} onChange={e => this.handleChange(e)} />
         <button onClick={this.handleSubmit}>Login</button>
         <br />
-        Write message: <br /> <input value={this.state.msgInput} onChange={e => this.handleMessageChange(e)}/>
+        Write message: <br /> <input value={this.state.msgInput} onChange={e => this.handleMessageChange(e)} />
         <button onClick={this.sendMessage}>send</button>
         <h1>Userlist</h1>
         {

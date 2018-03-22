@@ -1,12 +1,11 @@
-import React from 'react'
-import {Container, Row, Col} from 'react-grid-system'
+import React, { Component } from 'react'
 
-export default class Message extends React.Component {
+export default class Message extends Component {
   render () {
     return (
-      <div className="container">
+      <div className='container'>
         <p>{this.props.message}</p>
-        <span className="time-right">{this.props.username}</span>
+        <span className='time-right'>{this.props.username}</span>
         <style jsx>{`
           .messageBox {
             width: 100%;

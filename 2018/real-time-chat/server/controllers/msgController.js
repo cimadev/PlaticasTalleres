@@ -1,10 +1,10 @@
 const msgController = {}
 
-msgController.users = [
+let users = [
   'Cimadev'
 ]
 
-msgController.msgDb = [
+let msgDb = [
   {
     userName: 'Cimadev',
     msg: 'Hello welcome to cimachat web app :)'
@@ -26,8 +26,8 @@ msgController.post = (req, res) => {
 
 msgController.getAll = (req, res) => {
   res.status(200).json({
-    success:true,
-    data:msgDb
+    success: true,
+    data: msgDb
   })
 }
 module.exports = msgController
