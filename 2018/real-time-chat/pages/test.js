@@ -96,7 +96,7 @@ export default class Text extends Component {
 
   updateTyping() {
     console.log('setting typer')
-    let typingMaxTime = 400 //ms
+    let typingMaxTime = 600 //ms
     if(this.state.connected) {
       if(!this.state.typing) {
         this.setState({

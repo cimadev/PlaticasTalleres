@@ -1,41 +1,65 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Message from './message'
 import {Container, Row, Col} from 'react-grid-system'
 
-export default class ChatBox extends React.Component {
+export default class ChatBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
       inputValue: '',
-      messages: this.props.messages
-    };
+      typing: false
+    }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.updateTyping = this.updateTyping.bind(this)
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    let username = 'Luis';
+    this.props.socket.emit('new message', this.state.inputValue)
     let message = this.refs.message.value;
     this.setState({
-          messages: this.state.messages.concat({username, message}),
-          inputValue: ''
-        });
-    }
+      inputValue: ''
+    })
+  }
 
   handleInputChange(event) {
+    this.updateTyping()
     this.setState({ inputValue: event.target.value });
   }
 
+  updateTyping() {
+    console.log('setting typer')
+    let typingMaxTime = 3000 //ms
+    if(this.props.connected) {
+      if(!this.state.typing) {
+        this.setState({
+          typing: true
+        })
+        this.props.socket.emit('typing')
+      }
+      let lastTypingTime = (new Date()).getTime()
+      setTimeout(() => {
+        let typingTimer = (new Date().getTime())
+        let timeDiff = typingTimer- lastTypingTime
+        if (timeDiff >= typingMaxTime && this.state.typing) {
+          this.props.socket.emit('stop typing');
+          this.setState({
+            typing: false
+          })
+        }
+      }, typingMaxTime)
+    }
+  }
+
   render () {
-    let filteredContacts = this.state.messages;
     return (
       <div className="wrapper">
         <form onSubmit={this.handleSubmit}>
           <div className="chat-box-container">
             <Row className="Row" style={{marginLeft: 0, marginRight: 0}}>
-              {filteredContacts.map(({username, message}) => {
-                          return <Message username={username} message={message} />
+              {this.props.messages.map((msg, key) => {
+                          return <Message username={msg.userName} message={msg.msg} />
               })}
             </Row>
           </div>
