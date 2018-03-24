@@ -3,6 +3,7 @@ const app = express()
 const server = require('http').Server(app)
 const routes = require('./server/routes')
 const io = require('socket.io')(server)
+io.origins('*:*')
 const next = require('next')
 
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -10,6 +11,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const nextApp = next({ dev })
 const handle = nextApp.getRequestHandler()
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 let userCount = 0
 let onlineUsers = [
@@ -24,6 +26,7 @@ let msgDb = [
 
 nextApp.prepare()
   .then(() => {
+    app.use(cors())
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({
       extended: true

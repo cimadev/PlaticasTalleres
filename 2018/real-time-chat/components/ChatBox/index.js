@@ -30,7 +30,7 @@ export default class ChatBox extends Component {
 
   updateTyping() {
     console.log('setting typer')
-    let typingMaxTime = 3000 //ms
+    let typingMaxTime = 2500 //ms
     if(this.props.connected) {
       if(!this.state.typing) {
         this.setState({

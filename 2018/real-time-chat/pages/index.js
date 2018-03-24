@@ -3,7 +3,7 @@ import App from '../components/App'
 import { Row, Col} from 'react-grid-system'
 import { Component } from 'react'
 import io from 'socket.io-client'
-const socket = io('http://localhost:3000')
+let socket
 
 export default class extends Component {
   constructor (props) {
@@ -20,6 +20,7 @@ export default class extends Component {
     this.handleLogin = this.handleLogin.bind(this)
   }
   componentDidMount () {
+    socket = io()
     socket.on('login', (data) => {
       this.setState({
         userCount: data.userCount,
