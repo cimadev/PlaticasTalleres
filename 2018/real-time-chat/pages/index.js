@@ -10,10 +10,10 @@ export default class extends Component {
     return (
       <App>
         <Row style={{marginLeft: 0, marginRight: 0}}>
-          <Col xs={8} md={8} style={{background: '#266e34', margin: 0}}>
+          <Col xs={12} md={8} style={{background: '#266e34', margin: 0 }}>
             <ChatBox messages={messages}/>
           </Col>
-          <Col xs={4} md={4} style={{background: 'white', margin: 0}}>
+          <Col xs={0} md={4} style={{background: 'white', margin: 0}}>
             <div style={{widt: '100%', height: '100%', background: 'white'}} />
           </Col>
         </Row>
