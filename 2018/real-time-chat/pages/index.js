@@ -1,5 +1,5 @@
-import ChatBox from '../components/ChatBox'
-import App from '../components/App'
+import ChatBox from '../src/ChatBox'
+import App from '../src/App'
 import { Row, Col} from 'react-grid-system'
 import { Component } from 'react'
 import io from 'socket.io-client'
@@ -92,7 +92,6 @@ export default class extends Component {
             </Row>
             <div style={{widt: '100%', height: '100%', background: 'white'}}>
               <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
-
               {
                 this.state.onlineUsers.map((username, key) => {
                   return (
