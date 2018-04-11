@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Message from './message'
+import Message from '../component/message'
 import {Container, Row, Col} from 'react-grid-system'
 
 export default class ChatBox extends Component {

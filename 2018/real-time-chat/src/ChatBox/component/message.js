@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Message extends Component {
-  render () {
-    return (
-      <div className='container'>
-        <p>{this.props.message}</p>
-        <span className='time-right'>{this.props.username}</span>
-        <style jsx>{`
+const Message = (props) => (
+  <div className='container'>
+    <p>{props.message}</p>
+    <span className='time-right'>{props.username}</span>
+    <style jsx>{`
           .messageBox {
             width: 100%;
             height: 100%;
@@ -42,7 +40,7 @@ export default class Message extends Component {
           }
         `}
         </style>
-      </div>
-    )
-  }
-}
+  </div>
+)
+
+export default Message

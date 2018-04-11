@@ -72,17 +72,17 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/home/mrhorse/Desktop/github/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_document.js":
+/***/ "/home/luigi/Desktop/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_document.js":
 /***/ (function(module, exports) {
 
-module.exports = require("/home/mrhorse/Desktop/github/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_document.js");
+module.exports = require("/home/luigi/Desktop/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_document.js");
 
 /***/ }),
 
 /***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/home/mrhorse/Desktop/github/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_document.js");
+module.exports = __webpack_require__("/home/luigi/Desktop/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_document.js");
 
 
 /***/ })

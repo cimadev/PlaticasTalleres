@@ -1,4 +1,4 @@
-import ChatBox from '../src/ChatBox'
+import ChatBox from '../src/ChatBox/container/ChatBox'
 import App from '../src/App'
 import { Row, Col} from 'react-grid-system'
 import { Component } from 'react'
@@ -79,31 +79,53 @@ export default class extends Component {
   }
   render () {
     return (
-      <App>
-        <Row style={{marginLeft: 0, marginRight: 0}}>
-          <Col xs={8} md={8} style={{background: '#266e34', margin: 0}}>
-            <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
-          </Col>
-          <Col xs={4} md={4} style={{background: 'white', margin: 0}}>
-            <Row>
-              <h1>Username</h1>
-              <input value={this.state.username} onChange={e => this.handleUsernameChange(e)} />
-              <button onClick={this.handleLogin}>Login</button>
-            </Row>
-            <div style={{widt: '100%', height: '100%', background: 'white'}}>
-              <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
-              {
-                this.state.onlineUsers.map((username, key) => {
-                  return (
-                    <li key={key}>{username}</li>
-                  )
-                })
-              }
-              <h2>User typing: {this.state.userTyping}</h2>
-            </div>
-          </Col>
-        </Row>
-      </App>
+      <div>
+        <App>
+          <Row style={{marginLeft: 0, marginRight: 0}}>
+            <Col xs={8} md={8} style={{background: '#266e34', margin: 0}}>
+              <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
+            </Col>
+            <Col xs={4} md={4} style={{background: 'white', margin: 0}}>
+              <Row>
+                <h1>Username</h1>
+                <input value={this.state.username} onChange={e => this.handleUsernameChange(e)} />
+                <button onClick={this.handleLogin}>Login</button>
+              </Row>
+              <div style={{widt: '100%', height: '100%', background: 'white'}}>
+                <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
+                {
+                  this.state.onlineUsers.map((username, key) => {
+                    return (
+                      <li className="list-group-item" key={key}>{username}</li>
+                    )
+                  })
+                }
+                <h2>User typing: {this.state.userTyping}</h2>
+              </div>
+            </Col>
+          </Row>
+        </App>
+        <style jsx>{`
+
+          .list-group-item {
+            position: relative;
+            display: block;
+            padding: .75rem 1.25rem;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border: 1px solid rgba(0,0,0,.125);
+          }
+
+          .list-group-item:hover {
+            z-index: 1;
+            text-decoration: none;
+          }
+
+
+
+        `}
+        </style>
+      </div>
     )
   }
 }
