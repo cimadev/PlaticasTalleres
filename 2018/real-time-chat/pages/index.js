@@ -1,7 +1,9 @@
 import ChatBox from '../src/ChatBox/container/ChatBox'
 import App from '../src/App'
 import { Row, Col} from 'react-grid-system'
-import { Component } from 'react'
+import Login from '../src/Login/components/login'
+import React, { Component } from 'react'
+import Modal from 'react-awesome-modal';
 import io from 'socket.io-client'
 let socket
 
@@ -14,10 +16,9 @@ export default class extends Component {
       onlineUsers: ['Cimadev'],
       messages: [],
       connected: false,
-      userTyping: ''
+      userTyping: '',
+      modalVisible: false
     }
-    this.handleUsernameChange = this.handleUsernameChange.bind(this)
-    this.handleLogin = this.handleLogin.bind(this)
   }
   componentDidMount () {
     socket = io()
@@ -64,33 +65,54 @@ export default class extends Component {
         messages: data.msgDb
       })
     })
+    this.openModal()
   }
 
-  handleUsernameChange (e) {
+  handleUsernameChange = (e) => {
     this.setState({
       username: e.target.value
     })
   }
 
-  handleLogin (e) {
+  handleLogin = (e) => {
     e.preventDefault()
     console.log(`User ${this.state.username} logged in`)
     socket.emit('add user', this.state.username)
+    this.closeModal()
   }
+
+  openModal = () => {
+    console.log('activation')
+    this.setState({
+      modalVisible : true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      modalVisible : false
+    })
+  }
+
   render () {
     return (
       <div>
         <App>
+        <section>
+          <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+            <div>
+              <Login
+                username={this.state.username}
+                handleUsernameChange={this.handleUsernameChange}
+                handleLogin={this.handleLogin} />
+            </div>
+          </Modal>
+        </section>
           <Row style={{marginLeft: 0, marginRight: 0}}>
             <Col xs={8} md={8} style={{background: '#266e34', margin: 0}}>
               <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
             </Col>
             <Col xs={4} md={4} style={{background: 'white', margin: 0}}>
-              <Row>
-                <h1>Username</h1>
-                <input value={this.state.username} onChange={e => this.handleUsernameChange(e)} />
-                <button onClick={this.handleLogin}>Login</button>
-              </Row>
               <div style={{widt: '100%', height: '100%', background: 'white'}}>
                 <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
                 {
@@ -106,7 +128,6 @@ export default class extends Component {
           </Row>
         </App>
         <style jsx>{`
-
           .list-group-item {
             position: relative;
             display: block;
@@ -120,9 +141,6 @@ export default class extends Component {
             z-index: 1;
             text-decoration: none;
           }
-
-
-
         `}
         </style>
       </div>

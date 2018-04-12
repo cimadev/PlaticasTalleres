@@ -72,18 +72,26 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "/home/luigi/Desktop/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_error.js":
-/***/ (function(module, exports) {
+/***/ "./node_modules/next/dist/pages/_error.js":
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = require("/home/luigi/Desktop/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_error.js");
+module.exports = __webpack_require__("next/error")
+
 
 /***/ }),
 
 /***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__("/home/luigi/Desktop/PlaticasTalleres/2018/real-time-chat/node_modules/next/dist/pages/_error.js");
+module.exports = __webpack_require__("./node_modules/next/dist/pages/_error.js");
 
+
+/***/ }),
+
+/***/ "next/error":
+/***/ (function(module, exports) {
+
+module.exports = require("next/error");
 
 /***/ })
 

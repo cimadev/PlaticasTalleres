@@ -19,6 +19,7 @@
     "express": "^4.16.3",
     "next": "^5.0.0",
     "react": "^16.2.0",
+    "react-awesome-modal": "^2.0.3",
     "react-dom": "^16.2.0",
     "react-grid-system": "^3.1.2",
     "socket.io": "^2.0.4",
