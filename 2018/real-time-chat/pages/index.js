@@ -5,6 +5,7 @@ import Login from '../src/Login/components/login'
 import React, { Component } from 'react'
 import Modal from 'react-awesome-modal';
 import io from 'socket.io-client'
+import TypingIcon from '../src/Icons/components/typing'
 let socket
 
 export default class extends Component {
@@ -17,9 +18,11 @@ export default class extends Component {
       messages: [],
       connected: false,
       userTyping: '',
+      isTyping: false,
       modalVisible: false
     }
   }
+
   componentDidMount () {
     socket = io()
     socket.on('login', (data) => {
@@ -52,12 +55,14 @@ export default class extends Component {
     })
     socket.on('typing', (data) => {
       this.setState({
-        userTyping: data.userName
+        userTyping: data.userName,
+        isTyping: true
       })
     })
     socket.on('stop typing', (data) => {
       this.setState({
-        userTyping: ''
+        userTyping: '',
+        isTyping: false
       })
     })
     socket.on('send message', (data) => {
@@ -95,6 +100,15 @@ export default class extends Component {
   }
 
   render () {
+    const isTyping = this.state.isTyping ? (
+      <div>
+        <TypingIcon color='green' size='60'/>
+        <br/>
+      </div>
+      ) : (
+        <div>
+        </div>
+      )
     return (
       <div>
         <App>
@@ -110,7 +124,7 @@ export default class extends Component {
         </section>
           <Row style={{marginLeft: 0, marginRight: 0}}>
             <Col xs={12} md={8} style={{background: '#266e34', margin: 0}}>
-              <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
+              <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
             </Col>
             <Hidden xs md>
             <Col xs={0} md={4} style={{background: 'white', margin: 0}}>
@@ -123,7 +137,6 @@ export default class extends Component {
                     )
                   })
                 }
-                <h2>User typing: {this.state.userTyping}</h2>
               </div>
             </Col>
             </Hidden>

@@ -56,11 +56,14 @@ export default class ChatBox extends Component {
     return (
       <div className="wrapper">
         <form onSubmit={this.handleSubmit}>
-          <div className="chat-box-container">
+          <div ref='chatBox' className="chat-box-container">
             <Row className="Row" style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
               {this.props.messages.map((msg, key) => {
                           return <Message username={msg.userName} message={msg.msg} />
               })}
+              <div className='flex-item'>
+                {this.props.isTyping}
+              </div>
             </Row>
           </div>
           <Row style={{marginTop: '3%'}}>
@@ -79,7 +82,15 @@ export default class ChatBox extends Component {
             </Row>
         </form>
         <style jsx>{`
-
+          .flex-item {
+            position: absolute;
+             left: 50%;
+             top: 90%;
+             text-align: center;
+             width:546px;
+             margin-left: -273px; /*half width*/
+             margin-top: -132px; /*half height*/
+          }
           .button {
           border-radius: 4px;
           background-color: #f49320;
