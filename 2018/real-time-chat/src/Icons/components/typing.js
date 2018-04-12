@@ -19,7 +19,7 @@ const TypingIcon = (props) => (
       <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
     </rect>
     <style>{`
-      svg rect {
+      rect {
         fill: ${props.color};
       }
     `}</style>
