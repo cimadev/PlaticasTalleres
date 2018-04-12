@@ -109,10 +109,10 @@ export default class extends Component {
           </Modal>
         </section>
           <Row style={{marginLeft: 0, marginRight: 0}}>
-            <Col xs={8} md={8} style={{background: '#266e34', margin: 0}}>
+            <Col xs={12} md={8} style={{background: '#266e34', margin: 0}}>
               <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
             </Col>
-            <Col xs={4} md={4} style={{background: 'white', margin: 0}}>
+            <Col xs={0} md={4} style={{background: 'white', margin: 0}}>
               <div style={{widt: '100%', height: '100%', background: 'white'}}>
                 <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
                 {

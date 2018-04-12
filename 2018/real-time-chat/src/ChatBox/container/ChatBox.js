@@ -57,20 +57,26 @@ export default class ChatBox extends Component {
       <div className="wrapper">
         <form onSubmit={this.handleSubmit}>
           <div className="chat-box-container">
-            <Row className="Row" style={{marginLeft: 0, marginRight: 0}}>
+            <Row className="Row" style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
               {this.props.messages.map((msg, key) => {
                           return <Message username={msg.userName} message={msg.msg} />
               })}
             </Row>
           </div>
-          <div className="input-container">
-            <input type="text"
-              className="input__field input__field--minoru"
-              ref="message"
-              onChange={this.handleInputChange}
-              value={ this.state.inputValue} />
-          </div>
-          <button type="submit" className="button"><span>SEND </span></button>
+          <Row style={{marginTop: '3%'}}>
+              <Col xs={8} md={8} lg={8}>
+                <div className="input-container">
+                  <input type="text"
+                    className="input__field input__field--minoru"
+                    ref="message"
+                    onChange={this.handleInputChange}
+                    value={ this.state.inputValue} />
+                </div>
+              </Col>
+              <Col xs={4} md={4} lg={4} style={{paddingLeft: 0}}>
+                <button type="submit" className="button"><span>SEND </span></button>
+              </Col>
+            </Row>
         </form>
         <style jsx>{`
 
@@ -81,13 +87,16 @@ export default class ChatBox extends Component {
           color: #FFFFFF;
           text-align: center;
           font-size: 28px;
-          padding: 20px;
+          max-height: 65px;
+          margin-top: 10px;
+          padding-top: 18px;
+          padding-right: 10px;
+          padding-left: 10px;
+          padding-bottom: 13px;
           width: 100%;
           max-width: 200px;
           transition: all 0.5s;
           cursor: pointer;
-          margin: 5px;
-          margin-left: 15px;
         }
 
         .button span {
@@ -124,7 +133,6 @@ export default class ChatBox extends Component {
             height: 100vh;
           },
           .input-container {
-            margin-top: 15px;
             width: 100%;
           }
           .chat-box-container {
@@ -133,6 +141,10 @@ export default class ChatBox extends Component {
             overflow: scroll;
             overflow-x: hidden;
             margin-top: 3%;
+            padding-top: 13px;
+            background-color: #f1f1f1;
+            padding-right: 10px;
+            border-radius: 12px;
           }
 
           /* width */
@@ -168,8 +180,10 @@ export default class ChatBox extends Component {
 
           .input__field {
           	float: left;
-          	padding: 0.8em;
-          	width: 75%;
+          	padding-top: .8em;
+            padding-bottom: .8em;
+            width: 100%;
+            margin-top: 10px;
             font-size: 17px;
           	border: none;
           	border-radius: 4px;
