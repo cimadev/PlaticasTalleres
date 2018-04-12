@@ -1,6 +1,6 @@
 import ChatBox from '../src/ChatBox/container/ChatBox'
 import App from '../src/App'
-import { Row, Col} from 'react-grid-system'
+import { Row, Col, Hidden} from 'react-grid-system'
 import Login from '../src/Login/components/login'
 import React, { Component } from 'react'
 import Modal from 'react-awesome-modal';
@@ -112,6 +112,7 @@ export default class extends Component {
             <Col xs={12} md={8} style={{background: '#266e34', margin: 0}}>
               <ChatBox socket={socket} connected={this.state.connected} messages={this.state.messages} />
             </Col>
+            <Hidden xs md>
             <Col xs={0} md={4} style={{background: 'white', margin: 0}}>
               <div style={{widt: '100%', height: '100%', background: 'white'}}>
                 <h1>Userlist</h1> <h3>Online users: {this.state.userCount}</h3>
@@ -125,6 +126,7 @@ export default class extends Component {
                 <h2>User typing: {this.state.userTyping}</h2>
               </div>
             </Col>
+            </Hidden>
           </Row>
         </App>
         <style jsx>{`

@@ -63,22 +63,20 @@ export default class ChatBox extends Component {
               })}
             </Row>
           </div>
-          <Hidden xs md>
-            <Row style={{marginTop: '3%'}}>
-                <Col xs={8} md={8} lg={8}>
-                  <div className="input-container">
-                    <input type="text"
-                      className="input__field input__field--minoru"
-                      ref="message"
-                      onChange={this.handleInputChange}
-                      value={ this.state.inputValue} />
-                  </div>
-                </Col>
-                <Col xs={4} md={4} lg={4} style={{paddingLeft: 0}}>
-                  <button type="submit" className="button"><span>SEND </span></button>
-                </Col>
-              </Row>
-            </Hidden>
+          <Row style={{marginTop: '3%'}}>
+              <Col xs={8} md={8} lg={8}>
+                <div className="input-container">
+                  <input type="text"
+                    className="input__field input__field--minoru"
+                    ref="message"
+                    onChange={this.handleInputChange}
+                    value={ this.state.inputValue} />
+                </div>
+              </Col>
+              <Col xs={4} md={4} lg={4} style={{paddingLeft: 0}}>
+                <button type="submit" className="button"><span>SEND </span></button>
+              </Col>
+            </Row>
         </form>
         <style jsx>{`
 
