@@ -11,19 +11,27 @@ const Message = (props) => (
           }
           p {
             font-size: large;
+            margin-left: 20px;
           }
           .container {
-            border: 2px solid #dedede;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px 0;
-            width: 100%;
-            margin-right: 10px;
+             clear: both;
+              border-radius: 20px;
+              margin-bottom: 2px;
+              width: 97%;
+              display:inline-block;
+              list-style:none;
+              margin-top: 10px;
+              margin-left: 18px;
+              margin-right: 18px;
+              float: right;
+              background: #d2e8d8;
+              font-family: Helvetica, Arial, sans-serif;
           }
           .time-right {
             float: right;
-            color: #aaa;
+            color: #f49320;
+            margin-right: 20px;
+            margin-bottom: 10px;
           }
           .container::after {
               content: "";
