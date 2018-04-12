@@ -99,7 +99,7 @@ export default class extends Component {
       <div>
         <App>
         <section>
-          <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInUp" onClickAway={() => this.closeModal()}>
+          <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInDown" onClickAway={() => this.closeModal()}>
             <div>
               <Login
                 username={this.state.username}
