@@ -7,7 +7,7 @@ import Modal from 'react-awesome-modal';
 import io from 'socket.io-client'
 import TypingIcon from '../src/Icons/components/typing'
 import HamburguerIcon from '../src/Icons/components/hamburguer'
-import Drawer from 'react-motion-drawer'
+import Drawer from 'react-motion-drawer';
 let socket
 
 export default class extends Component {
@@ -121,16 +121,16 @@ export default class extends Component {
     return (
       <div>
         <App>
-          <section>
-            <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInDown" onClickAway={() => this.closeModal()}>
-              <div>
-                <Login
-                  username={this.state.username}
-                  handleUsernameChange={this.handleUsernameChange}
-                  handleLogin={this.handleLogin} />
-              </div>
-            </Modal>
-          </section>
+        <section>
+          <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInDown" onClickAway={() => this.closeModal()}>
+            <div>
+              <Login
+                username={this.state.username}
+                handleUsernameChange={this.handleUsernameChange}
+                handleLogin={this.handleLogin} />
+            </div>
+          </Modal>
+        </section>
           <Row style={{marginLeft: 0, marginRight: 0}}>
             <Col xs={12} md={8} style={{background: '#266e34', margin: 0}}>
               <div onClick={this.handleToogle} style={{marginTop: 18}}>
