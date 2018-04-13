@@ -112,16 +112,16 @@ export default class extends Component {
     return (
       <div>
         <App>
-        <section>
-          <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInDown" onClickAway={() => this.closeModal()}>
-            <div>
-              <Login
-                username={this.state.username}
-                handleUsernameChange={this.handleUsernameChange}
-                handleLogin={this.handleLogin} />
-            </div>
-          </Modal>
-        </section>
+          <section>
+            <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInDown" onClickAway={() => this.closeModal()}>
+              <div>
+                <Login
+                  username={this.state.username}
+                  handleUsernameChange={this.handleUsernameChange}
+                  handleLogin={this.handleLogin} />
+              </div>
+            </Modal>
+          </section>
           <Row style={{marginLeft: 0, marginRight: 0}}>
             <Col xs={12} md={8} style={{background: '#266e34', margin: 0}}>
               <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
