@@ -7,8 +7,10 @@ const Login = (props) => (
     </div>
     <div className='login-block'>
       <h1>Login</h1>
-      <input value={props.username} onChange={e => props.handleUsernameChange(e)} />
-      <button onClick={props.handleLogin}>Login</button>
+      <form onSubmit={ props.handleLogin }>
+        <input value={ props.username } onChange={e => props.handleUsernameChange(e)} />
+        <button type='submit'>Login</button>
+      </form>
     </div>
     <style jsx>{`
     .logo {

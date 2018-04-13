@@ -30,11 +30,6 @@ const MessageInput = (props) => (
         box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #red, 0 1px 0 #red;
       }
 
-
-        .input-container {
-          width: 100%;
-        }
-
       .input__field {
         float: left;
         padding-top: .8em;
