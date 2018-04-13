@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/share/yarn/bin/yarn.js test
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js standard --fix
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
@@ -5502,7 +5502,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c standard && node server.js
+  Arguments: -c /home/mrhorse/Desktop/github/PlaticasTalleres/2018/real-time-chat/node_modules/.bin/standard --fix
   Directory: /home/mrhorse/Desktop/github/PlaticasTalleres/2018/real-time-chat
   Output:
   
