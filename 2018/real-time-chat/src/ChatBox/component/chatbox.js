@@ -31,10 +31,10 @@ const ChatBox = (props) => (
 
       .chat-box-container {
         width: 100%;
-        height: 80vh;
+        height: 68vh;
         overflow: scroll;
         overflow-x: hidden;
-        margin-top: 3%;
+        margin-top: 1.5%;
         padding-top: 13px;
         background-color: #f1f1f1;
         padding-right: 10px;

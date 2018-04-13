@@ -4,7 +4,7 @@ import { Row, Col } from 'react-grid-system'
 const MessageInput = (props) => (
   <div>
     <form onSubmit={props.handleSubmit}>
-      <Row style={{marginTop: '3%'}}>
+      <Row style={{marginTop: '1.5%'}}>
         <Col xs={8} md={8} lg={8}>
           <div className='input-container'>
             <input type='text'

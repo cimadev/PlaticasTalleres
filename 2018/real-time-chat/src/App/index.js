@@ -29,6 +29,7 @@ const App = (props) => (
         }
         #__next {
           height: 100%;
+          background-color: #276E35;
         }
         .wrapperHeight {
           height: 100%;

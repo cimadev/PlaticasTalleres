@@ -63,7 +63,7 @@ export default class ChatContainer extends Component {
         <style jsx>{`
           .wrapper {
             width: 100%;
-            height: 100vh;
+            height: 83vh;
           },
         `}</style>
       </div>

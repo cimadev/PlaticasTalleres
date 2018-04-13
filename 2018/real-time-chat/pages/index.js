@@ -132,10 +132,10 @@ export default class extends Component {
             </Modal>
           </section>
           <Row style={{marginLeft: 0, marginRight: 0}}>
-            <Col xs={12} md={8} style={{background: '#266e34', margin: 0}}>
-              <div onClick={this.handleToogle} style={{marginTop: 18}}>
-                <HamburguerIcon size='30'/>
-              </div>
+            <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
+                <div onClick={this.handleToogle} style={{marginTop: 18}}>
+                  <HamburguerIcon size='30'/>
+                </div>
               <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
             </Col>
             <Drawer open={this.state.open} onChange={open => this.setState({ open: open })} right={true}>
