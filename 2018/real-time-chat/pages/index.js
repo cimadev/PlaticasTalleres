@@ -142,7 +142,7 @@ export default class extends Component {
                   </div>
                 <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
               </Col>
-              <Drawer open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
+              <Drawer width={180} open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
                 {
                   this.state.onlineUsers.map((username, key) => {
                     return (
