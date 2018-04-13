@@ -17,9 +17,6 @@ const ChatBox = (props) => (
       <div className='flex-item'>
         {props.isTyping}
       </div>
-      <div style={{ float:"left", clear: "both" }}
-        ref={ props.setRef }>
-      </div>
     </Row>
     <style jsx>{`
       .flex-item {

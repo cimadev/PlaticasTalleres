@@ -9,7 +9,6 @@ const MessageInput = (props) => (
           <div className='input-container'>
             <input type='text'
               className='input__field input__field--minoru'
-              ref='message'
               onChange={props.handleInputChange}
               value={props.inputValue} />
           </div>

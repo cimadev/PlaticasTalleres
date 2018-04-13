@@ -12,23 +12,6 @@ export default class ChatContainer extends Component {
     }
   }
 
-  componentDidMount() {
-    this.scrollToBottom()
-  }
-
-  componentDidUpdate() {
-    this.scrollToBottom()
-  }
-
-  setRef = (messagesEnd) => {
-    this.messagesEnd = messagesEnd
-    console.log(this.messagesEnd)
-  }
-
-  scrollToBottom = () => {
-    this.messagesEnd.scrollIntoView({ behavior: "smooth" })
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.socket.emit('new message', this.state.inputValue)
@@ -71,7 +54,6 @@ export default class ChatContainer extends Component {
     return (
       <div className="wrapper">
         <ChatBox
-          setRef={ this.setRef }
           isTyping={ this.props.isTyping }
           messages={ this.props.messages }
           username={ this.props.username}/>
