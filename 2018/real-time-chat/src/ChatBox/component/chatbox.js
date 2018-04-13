@@ -1,5 +1,6 @@
 import React from 'react'
 import Message from '../component/message'
+import UserMessage from '../component/userMessage'
 import { Row } from 'react-grid-system'
 
 const ChatBox = (props) => (
@@ -7,7 +8,10 @@ const ChatBox = (props) => (
     <Row className="Row" style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
       {
         props.messages.map((msg, key) => {
-          return <Message username={msg.userName} message={msg.msg} />
+          return msg.userName === props.username ?
+            <UserMessage username={msg.userName} message={msg.msg} />
+            : <Message username={msg.userName} message={msg.msg} />
+
         })
       }
       <div className='flex-item'>

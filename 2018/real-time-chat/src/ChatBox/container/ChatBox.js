@@ -55,7 +55,8 @@ export default class ChatContainer extends Component {
       <div className="wrapper">
         <ChatBox
           isTyping={ this.props.isTyping }
-          messages={ this.props.messages } />
+          messages={ this.props.messages }
+          username={ this.props.username}/>
         <MessageInput
           handleSubmit={ this.handleSubmit }
           handleInputChange={ this.handleInputChange }

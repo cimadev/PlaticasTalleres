@@ -140,7 +140,7 @@ export default class extends Component {
                   <div onClick={this.handleToogle} style={{marginTop: 18}}>
                     <HamburguerIcon size='30'/>
                   </div>
-                <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
+                  <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} username={this.state.username}/>
               </Col>
               <Drawer width={180} open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
                 {
