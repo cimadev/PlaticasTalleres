@@ -118,6 +118,9 @@ export default class extends Component {
         <div>
         </div>
       )
+      const style = {
+        backgroundColor: 'white'
+      }
     return (
       <div>
         <App>
@@ -131,25 +134,41 @@ export default class extends Component {
               </div>
             </Modal>
           </section>
-          <Row style={{marginLeft: 0, marginRight: 0}}>
-            <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
-                <div onClick={this.handleToogle} style={{marginTop: 18}}>
-                  <HamburguerIcon size='30'/>
-                </div>
-              <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
-            </Col>
-            <Drawer open={this.state.open} onChange={open => this.setState({ open: open })} right={true}>
-              {
-                this.state.onlineUsers.map((username, key) => {
-                  return (
-                    <li className="list-group-item" key={key}>{username}</li>
-                  )
-                })
-              }
-            </Drawer>
-          </Row>
+          <div className="row-wrapper">
+            <Row>
+              <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
+                  <div onClick={this.handleToogle} style={{marginTop: 18}}>
+                    <HamburguerIcon size='30'/>
+                  </div>
+                <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} />
+              </Col>
+              <Drawer open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
+                {
+                  this.state.onlineUsers.map((username, key) => {
+                    return (
+                      <li className="list-group-item" key={key}>{username}</li>
+                    )
+                  })
+                }
+              </Drawer>
+            </Row>
+          </div>
         </App>
         <style jsx>{`
+
+          drawer {
+            background-color: red;
+          }
+          .row-wrapper {
+            margin-left: 15px;
+            margin-right: 15px;
+          }
+          @media only screen and (min-width: 800px) {
+              .row-wrapper {
+                  margin-left: 135px;
+                  margin-right: 135px;
+              }
+          }
           .list-group-item {
             position: relative;
             display: block;
