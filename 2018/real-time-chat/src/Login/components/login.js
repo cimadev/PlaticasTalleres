@@ -2,15 +2,15 @@ import React from 'react'
 
 const Login = (props) => (
   <div>
-    <div className="logo">
-      <img src='/static/cimadev.png' width='100%' height='100'/>
+    <div className='logo'>
+      <img src='/static/cimadev.png' width='100%' height='100' />
     </div>
-    <div className="login-block">
-        <h1>Login</h1>
-        <input value={props.username} onChange={e => props.handleUsernameChange(e)} />
-        <button onClick={props.handleLogin}>Login</button>
+    <div className='login-block'>
+      <h1>Login</h1>
+      <input value={props.username} onChange={e => props.handleUsernameChange(e)} />
+      <button onClick={props.handleLogin}>Login</button>
     </div>
-  <style jsx>{`
+    <style jsx>{`
     .logo {
         width: 213px;
         background: url('/static/cimadev.png') no-repeat;

@@ -9,12 +9,9 @@ export default class ChatBox extends Component {
       inputValue: '',
       typing: false
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.updateTyping = this.updateTyping.bind(this)
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.socket.emit('new message', this.state.inputValue)
     let message = this.refs.message.value;
@@ -23,12 +20,12 @@ export default class ChatBox extends Component {
     })
   }
 
-  handleInputChange(event) {
+  handleInputChange = (event) => {
     this.updateTyping()
     this.setState({ inputValue: event.target.value });
   }
 
-  updateTyping() {
+  updateTyping = () => {
     console.log('setting typer')
     let typingMaxTime = 2500 //ms
     if(this.props.connected) {
@@ -55,18 +52,20 @@ export default class ChatBox extends Component {
   render () {
     return (
       <div className="wrapper">
-        <form onSubmit={this.handleSubmit}>
           <div ref='chatBox' className="chat-box-container">
             <Row className="Row" style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
-              {this.props.messages.map((msg, key) => {
-                          return <Message username={msg.userName} message={msg.msg} />
-              })}
+              {
+                this.props.messages.map((msg, key) => {
+                  return <Message username={msg.userName} message={msg.msg} />
+                })
+              }
               <div className='flex-item'>
                 {this.props.isTyping}
               </div>
             </Row>
           </div>
-          <Row style={{marginTop: '3%'}}>
+          <form onSubmit={this.handleSubmit}>
+            <Row style={{marginTop: '3%'}}>
               <Col xs={8} md={8} lg={8}>
                 <div className="input-container">
                   <input type="text"
@@ -77,136 +76,135 @@ export default class ChatBox extends Component {
                 </div>
               </Col>
               <Col xs={4} md={4} lg={4} style={{paddingLeft: 0}}>
-                <button type="submit" className="button"><span>SEND </span></button>
+                <button type='submit' className="button"><span>SEND </span></button>
               </Col>
             </Row>
-        </form>
-        <style jsx>{`
-          .flex-item {
-            position: absolute;
-             left: 50%;
-             top: 90%;
-             text-align: center;
-             width:546px;
-             margin-left: -273px; /*half width*/
-             margin-top: -132px; /*half height*/
-          }
-          .button {
-          border-radius: 4px;
-          background-color: #f49320;
-          border: none;
-          color: #FFFFFF;
-          text-align: center;
-          font-size: 28px;
-          max-height: 65px;
-          margin-top: 10px;
-          padding-top: 18px;
-          padding-right: 10px;
-          padding-left: 10px;
-          padding-bottom: 13px;
-          width: 100%;
-          max-width: 200px;
-          transition: all 0.5s;
-          cursor: pointer;
-        }
+          </form>
+          <style jsx>{`
+            .flex-item {
+              position: absolute;
+               left: 50%;
+               top: 90%;
+               text-align: center;
+               width:546px;
+               margin-left: -273px; /*half width*/
+               margin-top: -132px; /*half height*/
+            }
+            .button {
+              border-radius: 4px;
+              background-color: #f49320;
+              border: none;
+              color: #FFFFFF;
+              text-align: center;
+              font-size: 28px;
+              max-height: 65px;
+              margin-top: 10px;
+              padding-top: 18px;
+              padding-right: 10px;
+              padding-left: 10px;
+              padding-bottom: 13px;
+              width: 100%;
+              max-width: 200px;
+              transition: all 0.5s;
+              cursor: pointer;
+            }
 
-        .button span {
-          cursor: pointer;
-          display: inline-block;
-          position: relative;
-          transition: 0.5s;
-        }
-        span {
-          margin: 0px;
-          font-weight: 800;
-        }
+            .button span {
+              cursor: pointer;
+              display: inline-block;
+              position: relative;
+              transition: 0.5s;
+            }
 
-        .button span:after {
-          content: '\00bb';
-          position: absolute;
-          opacity: 0;
-          top: 0;
-          right: -20px;
-          transition: 0.5s;
-          align: center;
-        }
+            span {
+              margin: 0px;
+              font-weight: 800;
+            }
 
-        .button:hover span {
-          padding-right: 25px;
-        }
+            .button span:after {
+              content: '\00bb';
+              position: absolute;
+              opacity: 0;
+              top: 0;
+              right: -20px;
+              transition: 0.5s;
+              align: center;
+            }
 
-        .button:hover span:after {
-          opacity: 1;
-          right: 0;
-        }
-          .wrapper {
-            width: 100%;
-            height: 100vh;
-          },
-          .input-container {
-            width: 100%;
-          }
-          .chat-box-container {
-            width: 100%;
-            height: 80vh;
-            overflow: scroll;
-            overflow-x: hidden;
-            margin-top: 3%;
-            padding-top: 13px;
-            background-color: #f1f1f1;
-            padding-right: 10px;
-            border-radius: 12px;
-          }
+            .button:hover span {
+              padding-right: 25px;
+            }
 
-          /* width */
-          ::-webkit-scrollbar {
-              width: 10px;
-          }
+            .button:hover span:after {
+              opacity: 1;
+              right: 0;
+            }
+            .wrapper {
+              width: 100%;
+              height: 100vh;
+            },
+            .input-container {
+              width: 100%;
+            }
+            .chat-box-container {
+              width: 100%;
+              height: 80vh;
+              overflow: scroll;
+              overflow-x: hidden;
+              margin-top: 3%;
+              padding-top: 13px;
+              background-color: #f1f1f1;
+              padding-right: 10px;
+              border-radius: 12px;
+            }
 
-          /* Track */
-          ::-webkit-scrollbar-track {
-              background: #276e34;
-          }
+            /* width */
+            ::-webkit-scrollbar {
+                width: 10px;
+            }
 
-          /* Handle */
-          ::-webkit-scrollbar-thumb {
-            background: #f49320;
-            border-radius: 10px;
-          }
+            /* Track */
+            ::-webkit-scrollbar-track {
+                background: #276e34;
+            }
 
-          /* Handle on hover */
-          ::-webkit-scrollbar-thumb:hover {
-              background: #b30000;
-          }
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #f49320;
+              border-radius: 10px;
+            }
 
-          input {
-            height: 34px;
-            width: 100%;
-            border-radius: 3px;
-            border: 1px solid transparent;
-            border-top: none;
-            border-bottom: 1px solid #DDD;
-            box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #red, 0 1px 0 #red;
-          }
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #b30000;
+            }
 
-          .input__field {
-          	float: left;
-          	padding-top: .8em;
-            padding-bottom: .8em;
-            width: 100%;
-            margin-top: 10px;
-            font-size: 17px;
-          	border: none;
-          	border-radius: 4px;
-          	background: #f0f0f0;
-          	color: #black;
-          	font-weight: bold;
-          	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-          	-webkit-appearance: none; /* for box shadows to show on iOS */
-          }
+            input {
+              height: 34px;
+              width: 100%;
+              border-radius: 3px;
+              border: 1px solid transparent;
+              border-top: none;
+              border-bottom: 1px solid #DDD;
+              box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #red, 0 1px 0 #red;
+            }
 
-        `}
-        </style>
+            .input__field {
+            	float: left;
+            	padding-top: .8em;
+              padding-bottom: .8em;
+              width: 100%;
+              margin-top: 10px;
+              font-size: 17px;
+            	border: none;
+            	border-radius: 4px;
+            	background: #f0f0f0;
+            	color: #black;
+            	font-weight: bold;
+            	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            	-webkit-appearance: none; /* for box shadows to show on iOS */
+            }
+          `}</style>
       </div>
     )
   }

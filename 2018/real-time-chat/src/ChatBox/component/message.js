@@ -47,7 +47,7 @@ const Message = (props) => (
               border-radius: 50%;
           }
         `}
-        </style>
+    </style>
   </div>
 )
 

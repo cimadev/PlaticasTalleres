@@ -9,7 +9,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const nextApp = next({ dev })
 const handle = nextApp.getRequestHandler()
 const bodyParser = require('body-parser')
-//const cors = require('cors')
+// const cors = require('cors')
 const socketEvents = require('./server/sockets')
 
 let userCount = 0
@@ -25,7 +25,7 @@ let msgDb = [
 
 nextApp.prepare()
   .then(() => {
-    //app.use(cors())
+    // app.use(cors())
     app.use(bodyParser.json())
     app.use(bodyParser.urlencoded({
       extended: true
