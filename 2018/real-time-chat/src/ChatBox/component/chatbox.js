@@ -4,18 +4,21 @@ import UserMessage from '../component/userMessage'
 import { Row } from 'react-grid-system'
 
 const ChatBox = (props) => (
-  <div ref='chatBox' className="chat-box-container">
+  <div className="chat-box-container">
     <Row className="Row" style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
       {
         props.messages.map((msg, key) => {
           return msg.userName === props.username ?
-            <UserMessage username={msg.userName} message={msg.msg} />
-            : <Message username={msg.userName} message={msg.msg} />
+            <UserMessage key={ key } username={msg.userName} message={msg.msg} />
+            : <Message key={ key } username={msg.userName} message={msg.msg} />
 
         })
       }
       <div className='flex-item'>
         {props.isTyping}
+      </div>
+      <div style={{ float:"left", clear: "both" }}
+        ref={ props.setRef }>
       </div>
     </Row>
     <style jsx>{`
