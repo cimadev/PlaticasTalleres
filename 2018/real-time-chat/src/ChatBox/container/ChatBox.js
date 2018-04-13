@@ -85,6 +85,7 @@ export default class ChatBox extends Component {
             .input-container {
               width: 100%;
             }
+
             .chat-box-container {
               width: 100%;
               height: 80vh;
