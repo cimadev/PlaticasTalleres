@@ -11,5 +11,5 @@ This repository is aimed to locate the presentation, code, and material used in 
  - [Introduction to Machine Learning](https://github.com/cimadev/PlaticasTalleres/tree/master/2017/nov_10_Intro_Machine_Learning) 
  
 **2018 Projects and Workshops**
- - [CimpaP3 - Youtube Converter](cimap3.now.sh) - [repo](https://github.com/saulflores95/youtubetomp3)
- - [CimaChat - Real Time Communication Platform](cimachat.now.sh) - [repo](https://github.com/cimadev/PlaticasTalleres/tree/master/2018/real-time-chat)
+ - [CimpaP3 - Youtube Converter](https://cimap3.now.sh) - [repo](https://github.com/saulflores95/youtubetomp3)
+ - [CimaChat - Real Time Communication Platform](https://cimachat.now.sh) - [repo](https://github.com/cimadev/PlaticasTalleres/tree/master/2018/real-time-chat)
