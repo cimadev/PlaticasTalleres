@@ -33,20 +33,28 @@ export default class ChatBox extends React.Component {
       <div className="wrapper">
         <form onSubmit={this.handleSubmit}>
           <div className="chat-box-container">
-            <Row className="Row" style={{marginLeft: 0, marginRight: 0}}>
+            <ul>
               {filteredContacts.map(({username, message}) => {
-                          return <Message username={username} message={message} />
+                          return(
+                              <li><span className="span">{message}</span><span className="span-username">{username}</span></li>
+                          )
               })}
-            </Row>
+            </ul>
           </div>
-          <div className="input-container">
-            <input type="text"
-              className="input__field input__field--minoru"
-              ref="message"
-              onChange={this.handleInputChange}
-              value={ this.state.inputValue} />
-          </div>
-          <button type="submit" className="button"><span>SEND </span></button>
+          <Row style={{marginTop: '5%'}}>
+            <Col xs={8} md={8} lg={8}>
+              <div className="input-container">
+                <input type="text"
+                  className="input__field input__field--minoru"
+                  ref="message"
+                  onChange={this.handleInputChange}
+                  value={ this.state.inputValue} />
+              </div>
+            </Col>
+            <Col xs={4} md={4} lg={4}>
+              <button type="submit" className="button"><span>SEND </span></button>
+            </Col>
+          </Row>
         </form>
         <style jsx>{`
 
@@ -57,13 +65,12 @@ export default class ChatBox extends React.Component {
           color: #FFFFFF;
           text-align: center;
           font-size: 28px;
-          padding: 20px;
+          padding: 20px 10px 20px 10px;
           width: 100%;
           max-width: 200px;
           transition: all 0.5s;
           cursor: pointer;
           margin: 5px;
-          margin-left: 15px;
         }
 
         .button span {
@@ -98,9 +105,9 @@ export default class ChatBox extends React.Component {
           .wrapper {
             width: 100%;
             height: 100vh;
+
           },
           .input-container {
-            margin-top: 15px;
             width: 100%;
           }
           .chat-box-container {
@@ -109,6 +116,10 @@ export default class ChatBox extends React.Component {
             overflow: scroll;
             overflow-x: hidden;
             margin-top: 3%;
+            padding-top: 13px;
+            background-color: #f1f1f1;
+            padding-right: 10px;
+            border-radius: 12px;
           }
 
           /* width */
@@ -145,7 +156,8 @@ export default class ChatBox extends React.Component {
           .input__field {
           	float: left;
           	padding: 0.8em;
-          	width: 75%;
+          	width: 100%;
+            margin-top: 10px;
             font-size: 17px;
           	border: none;
           	border-radius: 4px;
@@ -156,6 +168,41 @@ export default class ChatBox extends React.Component {
           	-webkit-appearance: none; /* for box shadows to show on iOS */
           }
 
+          ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+          }
+
+          li{
+            clear: both;
+            padding-top: 20px
+            padding-bottom: 20px;
+            border-radius: 20px;
+            margin-bottom: 2px;
+            width: 97%;
+            display:inline-block;
+            list-style:none;
+            margin-top: 10px;
+            float: right;
+            background: #d2e8d8;
+            border-width: medium;
+            border-color: #276e34;
+            border-style: solid;
+            font-family: Helvetica, Arial, sans-serif;
+          }
+          .span {
+            margin-left: 15px;
+            float: left;
+            width: 85%;
+          }
+          .span-username {
+            float: left;
+            width: 85%;
+            text-align: right;
+          }
         `}
         </style>
       </div>

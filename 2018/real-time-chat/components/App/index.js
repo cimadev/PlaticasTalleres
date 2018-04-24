@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default class App extends Component {
   render () {
     return (
-      <div className='wrapperHeight'>
+      <div className='app-wrapper'>
         <Head>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <style>
@@ -38,10 +38,8 @@ export default class App extends Component {
             `}
           </style>
         </Head>
-        <div className='container'>
-          <div className='content'>
-            {this.props.children}
-          </div>
+        <div className='content'>
+          {this.props.children}
         </div>
         <style jsx>
           {`
@@ -54,7 +52,7 @@ export default class App extends Component {
               position: fixed;
               width: 100%;
             }
-            .wrapperHeight {
+            .app-wrapper {
               height: 100%;
             }
             .content {

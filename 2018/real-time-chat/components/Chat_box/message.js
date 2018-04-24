@@ -19,7 +19,6 @@ export default class Message extends React.Component {
             border: 2px solid #dedede;
             background-color: #f1f1f1;
             border-radius: 5px;
-            padding: 10px;
             margin: 10px 0;
             width: 100%;
             margin-right: 10px;
