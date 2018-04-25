@@ -34,10 +34,6 @@ const ChatBox = (props) => (
          margin-top: -132px; /*half height*/
       }
 
-      .input-container {
-        width: 100%;
-      }
-
       .chat-box-container {
         width: 100%;
         height: 63vh;
@@ -50,25 +46,17 @@ const ChatBox = (props) => (
         border-radius: 12px;
       }
 
-      /* width */
       ::-webkit-scrollbar {
           width: 10px;
       }
 
-      /* Track */
       ::-webkit-scrollbar-track {
           background: #276e34;
       }
 
-      /* Handle */
       ::-webkit-scrollbar-thumb {
         background: #f49320;
         border-radius: 10px;
-      }
-
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
-          background: #b30000;
       }
     `}</style>
   </div>

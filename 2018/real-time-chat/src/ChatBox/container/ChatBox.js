@@ -62,7 +62,7 @@ export default class ChatContainer extends Component {
 
   render () {
     return (
-      <div className="wrapper">
+      <div>
         <ChatBox
           endMessages= {el => this.endMessages = el}
           isTyping={ this.props.isTyping }
@@ -72,12 +72,6 @@ export default class ChatContainer extends Component {
           handleSubmit={ this.handleSubmit }
           handleInputChange={ this.handleInputChange }
           inputValue={ this.state.inputValue } />
-        <style jsx>{`
-          .wrapper {
-            width: 100%;
-            height: 83vh;
-          },
-        `}</style>
       </div>
     )
   }

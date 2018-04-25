@@ -6,15 +6,17 @@ const MessageInput = (props) => (
     <form onSubmit={props.handleSubmit}>
       <Row style={{marginTop: '1.5%'}}>
         <Col xs={8} md={8} lg={8}>
-          <div className='input-container'>
+          <div>
             <input type='text'
-              className='input__field input__field--minoru'
+              className='input__field'
               onChange={props.handleInputChange}
               value={props.inputValue} />
           </div>
         </Col>
         <Col xs={4} md={4} lg={4} style={{paddingLeft: 0}}>
-          <button type='submit' className='button'><span>SEND </span></button>
+          <div style={{marginTop: 10}}>
+            <button type='submit' className='button yellow'><span>✔</span>SEND</button>
+          </div>
         </Col>
       </Row>
     </form>
@@ -46,54 +48,59 @@ const MessageInput = (props) => (
       }
 
       .button {
-        border-radius: 4px;
-        background-color: #f49320;
-        border: none;
-        color: #FFFFFF;
-        text-align: center;
-        font-size: 28px;
-        max-height: 65px;
-        margin-top: 10px;
-        padding-top: 18px;
-        padding-right: 10px;
-        padding-left: 10px;
-        padding-bottom: 13px;
-        width: 100%;
-        max-width: 200px;
-        transition: all 0.5s;
-        cursor: pointer;
-      }
-
-      span {
-        margin: 0px;
-        font-weight: 800;
+        color: red;
+        background-color: red;
+        display: inline-block;
+        height: 62px;
+        line-height: 50px;
+        padding-right: 30px;
+        padding-left: 70px;
+        font-size: 25px;
+        position: relative;
+        background-color:rgb(41,127,184);
+        color:rgb(255,255,255);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 5px;
+        text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+        box-shadow:0px 2px 2px rgba(0,0,0,0.2);
       }
 
       .button span {
-        cursor: pointer;
-        display: inline-block;
-        position: relative;
-        transition: 0.5s;
-      }
-
-      .button span:after {
-        content: '\00bb';
+        display: initial;
+        font-size: 25px;
         position: absolute;
-        opacity: 0;
         top: 0;
-        right: -20px;
-        transition: 0.5s;
-        align: center;
+        height: 57px;
+        left: 0;
+        width: 50px;
+        background-color:rgba(0,0,0,0.5);
       }
 
-      .button:hover span {
-        padding-right: 25px;
+      .button:hover span, .button.active span {
+        background-color: #286e36;
+        border-right: 1px solid  rgba(0,0,0,0.3);
       }
 
-      .button:hover span:after {
-        opacity: 1;
-        right: 0;
+      .button:active {
+        margin-top: 2px;
+        margin-bottom: 13px;
       }
+
+      .button.yellow {
+        background: #f49320;
+      }
+
+      @media only screen and (max-width: 600px) {
+      .button span  {
+        display: none;
+      }
+      .button {
+        width: 100%;
+        padding: 0;
+      }
+    }
     `}</style>
   </div>
 )

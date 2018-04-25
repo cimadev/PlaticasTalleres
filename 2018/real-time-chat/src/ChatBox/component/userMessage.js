@@ -5,10 +5,6 @@ const UserMessage = (props) => (
     <p>{props.message}</p>
     <span className='time-right'>{props.username}</span>
     <style jsx>{`
-          .messageBox {
-            width: 100%;
-            height: 100%;
-          }
           p {
             font-size: large;
             margin-left: 20px;
@@ -37,14 +33,6 @@ const UserMessage = (props) => (
               content: "";
               clear: both;
               display: table;
-          }
-
-          .container img {
-              float: left;
-              max-width: 60px;
-              width: 100%;
-              margin-right: 20px;
-              border-radius: 50%;
           }
         `}
     </style>

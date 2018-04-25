@@ -22,7 +22,8 @@ export default class extends Component {
       userTyping: '',
       isTyping: false,
       modalVisible: false,
-      open: false
+      open: false,
+      drawerWidth: 180
     }
   }
 
@@ -142,7 +143,7 @@ export default class extends Component {
                   </div>
                   <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} username={this.state.username}/>
               </Col>
-              <Drawer width={180} open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
+              <Drawer width={200} open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
                 {
                   this.state.onlineUsers.map((username, key) => {
                     return (
@@ -155,10 +156,6 @@ export default class extends Component {
           </div>
         </App>
         <style jsx>{`
-
-          drawer {
-            background-color: red;
-          }
           .row-wrapper {
             margin-left: 15px;
             margin-right: 15px;
