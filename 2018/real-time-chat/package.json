@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "mon": "nodemon server.js",
-    "test": "standard && node server.js"
+    "test": "standard --parser babel-eslint  && node server.js"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
     "standard": "^11.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "nodemon": "^1.17.2"
   }
 }

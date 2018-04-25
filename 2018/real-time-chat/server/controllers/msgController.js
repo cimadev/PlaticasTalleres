@@ -30,4 +30,5 @@ msgController.getAll = (req, res) => {
     data: msgDb
   })
 }
+
 module.exports = msgController
