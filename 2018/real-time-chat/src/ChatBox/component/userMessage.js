@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 const UserMessage = (props) => (
   <div className='container'>

@@ -1,16 +1,5 @@
 const msgController = {}
 
-let users = [
-  'Cimadev'
-]
-
-let msgDb = [
-  {
-    userName: 'Cimadev',
-    msg: 'Hello welcome to cimachat web app :)'
-  }
-]
-
 msgController.post = (req, res) => {
   const {
     userName,
@@ -20,14 +9,12 @@ msgController.post = (req, res) => {
     userName,
     msg
   }
-  msgDb.push(newMsg)
-  console.log(msgDb)
+  console.log(newMsg)
 }
 
 msgController.getAll = (req, res) => {
   res.status(200).json({
-    success: true,
-    data: msgDb
+    success: true
   })
 }
 

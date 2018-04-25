@@ -1,9 +1,9 @@
 import ChatBox from '../src/ChatBox/container/ChatBox'
 import App from '../src/App'
-import { Row, Col, Hidden, Container} from 'react-grid-system'
+import { Row, Col, Container } from 'react-grid-system'
 import Login from '../src/Login/components/login'
 import React, { Component } from 'react'
-import Modal from 'react-awesome-modal';
+import Modal from 'react-awesome-modal'
 import io from 'socket.io-client'
 import TypingIcon from '../src/Icons/components/typing'
 import HamburguerIcon from '../src/Icons/components/hamburguer'
@@ -74,7 +74,7 @@ export default class extends Component {
         messages: data.msgDb
       })
     })
-    this.openModal()
+    this.toogleModal()
   }
 
   handleUsernameChange = (e) => {
@@ -87,25 +87,12 @@ export default class extends Component {
     e.preventDefault()
     console.log(`User ${this.state.username} logged in`)
     socket.emit('add user', this.state.username)
-    this.closeModal()
+    this.toogleModal()
   }
 
-  openModal = () => {
-    console.log('activation')
+  toogleModal = () => {
     this.setState({
-      modalVisible : true
-    })
-  }
-
-  closeModal = () => {
-    this.setState({
-      modalVisible : false
-    })
-  }
-
-  handleToogle = () => {
-    this.setState({
-      open : true
+      modalVisible: !this.state.modalVisible
     })
   }
 
@@ -115,22 +102,20 @@ export default class extends Component {
     })
   }
 
-
   render () {
     const isTyping = this.state.isTyping ? (
       <div>
-        <TypingIcon color='green' size='60'/>
-        <br/>
+        <TypingIcon color='green' size='60' />
+        <br />
       </div>
-      ) : (
-        <div>
-        </div>
-      )
+    ) : (
+      <div />
+    )
     return (
       <div>
         <App>
           <section>
-            <Modal visible={this.state.modalVisible} width="400" height="380px" effect="fadeInDown" onClickAway={() => this.closeModal()}>
+            <Modal visible={this.state.modalVisible} width='400' height='380px' effect='fadeInDown' onClickAway={() => this.toogleModal()}>
               <div>
                 <Login
                   username={this.state.username}
@@ -141,13 +126,13 @@ export default class extends Component {
           </section>
           <Container>
             <Row>
-                <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
-                    <div onClick={this.handleToogle} style={{marginTop: 18}}>
-                      <HamburguerIcon size='30'/>
-                    </div>
-                    <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} username={this.state.username}/>
-                </Col>
-                <DrawerApp open={this.state.open} users={this.state.onlineUsers} close={this.handleClose}/>
+              <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
+                <div onClick={this.handleToogle} style={{marginTop: 18}}>
+                  <HamburguerIcon size='30' />
+                </div>
+                <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} username={this.state.username} />
+              </Col>
+              <DrawerApp open={this.state.open} users={this.state.onlineUsers} handleClose={this.handleClose} />
             </Row>
           </Container>
         </App>

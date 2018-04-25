@@ -7,11 +7,11 @@ const style = {
 
 const DrawerApp = (props) => (
   <div>
-    <Drawer width={200} open={props.open} onChange={props.close} right={true} drawerStyle={style}>
+    <Drawer width={200} open={props.open} onChange={props.handleClose} right drawerStyle={style}>
       {
         props.users.map((username, key) => {
           return (
-            <li className="list-group-item" key={key}>{username}</li>
+            <li className='list-group-item' key={key}>{username}</li>
           )
         })
       }

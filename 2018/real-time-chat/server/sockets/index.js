@@ -1,14 +1,15 @@
 exports = module.exports = (io, onlineUsers, userCount, msgDb) => {
   io.on('connect', socket => {
     let addedUser = false //  declared to check if this socket has added a user
+    //Manejar evento de login de usuario
     socket.on('add user', (userName) => {
-      if (addedUser) return //eliminates ability for this socket user to declare another user
-      let userNameUnique = onlineUsers.indexOf(userName) > -1 //check if username is in user static db
-      if (userNameUnique) return //if username is already added exit this function
-      socket.userName = userName //username is new add this to socket
-      onlineUsers.push(userName) //push to username list
-      userCount++ //increment userCount
-      addedUser = true //change addedUser to true becouse user has alreadu been added
+      if (addedUser) return // eliminates ability for this socket user to declare another user
+      let userNameUnique = onlineUsers.indexOf(userName) > -1 // check if username is in user static db
+      if (userNameUnique) return // if username is already added exit this function
+      socket.userName = userName // username is new add this to socket
+      onlineUsers.push(userName) // push to username list
+      userCount++ // increment userCount
+      addedUser = true // change addedUser to true becouse user has alreadu been added
       socket.emit('login', {
         userCount,
         onlineUsers,
@@ -19,6 +20,7 @@ exports = module.exports = (io, onlineUsers, userCount, msgDb) => {
         userCount
       })
     })
+    
     socket.on('disconnect', () => {
       if (addedUser) {
         --userCount

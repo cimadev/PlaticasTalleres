@@ -4,13 +4,13 @@ import UserMessage from '../component/userMessage'
 import { Row } from 'react-grid-system'
 
 const ChatBox = (props) => (
-  <div className="chat-box-container">
-    <Row className="Row" style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
+  <div className='chat-box-container'>
+    <Row className='Row' style={{marginLeft: 0, marginRight: 0, paddingBottom: 50}}>
       {
         props.messages.map((msg, key) => {
-          return msg.userName === props.username ?
-            <UserMessage key={ key } username={msg.userName} message={msg.msg} />
-            : <Message key={ key } username={msg.userName} message={msg.msg} />
+          return msg.userName === props.username
+            ? <UserMessage key={key} username={msg.userName} message={msg.msg} />
+            : <Message key={key} username={msg.userName} message={msg.msg} />
         })
       }
       <div className='flex-item'>
