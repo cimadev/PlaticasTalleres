@@ -5,7 +5,7 @@ const MessageInput = (props) => (
   <div>
     <form onSubmit={props.handleSubmit}>
       <Row style={{marginTop: '1.5%'}}>
-        <Col xs={8} md={8} lg={8}>
+        <Col xs={9} md={9} lg={9} >
           <div>
             <input type='text'
               className='input__field'
@@ -13,7 +13,7 @@ const MessageInput = (props) => (
               value={props.inputValue} />
           </div>
         </Col>
-        <Col xs={4} md={4} lg={4} style={{paddingLeft: 0}}>
+        <Col xs={3} md={3} lg={3} style={{paddingLeft: 0}}>
           <div style={{marginTop: 10}}>
             <button type='submit' className='button yellow'><span>✔</span>SEND</button>
           </div>

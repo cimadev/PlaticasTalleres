@@ -1,13 +1,13 @@
 import ChatBox from '../src/ChatBox/container/ChatBox'
 import App from '../src/App'
-import { Row, Col, Hidden} from 'react-grid-system'
+import { Row, Col, Hidden, Container} from 'react-grid-system'
 import Login from '../src/Login/components/login'
 import React, { Component } from 'react'
 import Modal from 'react-awesome-modal';
 import io from 'socket.io-client'
 import TypingIcon from '../src/Icons/components/typing'
 import HamburguerIcon from '../src/Icons/components/hamburguer'
-import Drawer from 'react-motion-drawer'
+import DrawerApp from '../src/ChatBox/component/drawer'
 let socket
 
 export default class extends Component {
@@ -109,6 +109,13 @@ export default class extends Component {
     })
   }
 
+  handleClose = () => {
+    this.setState({
+      open: open
+    })
+  }
+
+
   render () {
     const isTyping = this.state.isTyping ? (
       <div>
@@ -119,9 +126,6 @@ export default class extends Component {
         <div>
         </div>
       )
-      const style = {
-        backgroundColor: 'white'
-      }
     return (
       <div>
         <App>
@@ -135,52 +139,18 @@ export default class extends Component {
               </div>
             </Modal>
           </section>
-          <div className="row-wrapper">
+          <Container>
             <Row>
-              <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
-                  <div onClick={this.handleToogle} style={{marginTop: 18}}>
-                    <HamburguerIcon size='30'/>
-                  </div>
-                  <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} username={this.state.username}/>
-              </Col>
-              <Drawer width={200} open={this.state.open} onChange={open => this.setState({ open: open })} right={true} drawerStyle={style}>
-                {
-                  this.state.onlineUsers.map((username, key) => {
-                    return (
-                      <li className="list-group-item" key={key}>{username}</li>
-                    )
-                  })
-                }
-              </Drawer>
+                <Col xs={12} md={12} style={{background: '#266e34', margin: 0}}>
+                    <div onClick={this.handleToogle} style={{marginTop: 18}}>
+                      <HamburguerIcon size='30'/>
+                    </div>
+                    <ChatBox isTyping={isTyping} socket={socket} connected={this.state.connected} messages={this.state.messages} username={this.state.username}/>
+                </Col>
+                <DrawerApp open={this.state.open} users={this.state.onlineUsers} close={this.handleClose}/>
             </Row>
-          </div>
+          </Container>
         </App>
-        <style jsx>{`
-          .row-wrapper {
-            margin-left: 15px;
-            margin-right: 15px;
-          }
-          @media only screen and (min-width: 800px) {
-              .row-wrapper {
-                  margin-left: 135px;
-                  margin-right: 135px;
-              }
-          }
-          .list-group-item {
-            position: relative;
-            display: block;
-            padding: .75rem 1.25rem;
-            margin-bottom: -1px;
-            background-color: #fff;
-            border: 1px solid rgba(0,0,0,.125);
-          }
-
-          .list-group-item:hover {
-            z-index: 1;
-            text-decoration: none;
-          }
-        `}
-        </style>
       </div>
     )
   }
