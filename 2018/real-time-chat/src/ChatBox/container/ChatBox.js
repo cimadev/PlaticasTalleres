@@ -10,6 +10,16 @@ export default class ChatContainer extends Component {
       inputValue: '',
       typing: false
     }
+    this.endMessages = React.createRef()
+  }
+
+  componentWillReceiveProps (newProps) {
+    if( newProps.messages !== this.props.messages )
+      this.scrollToEnd()
+  }
+
+  scrollToEnd = () => {
+    this.endMessages.scrollIntoView({behavior:'smooth'});
   }
 
   handleSubmit = (event) => {
@@ -27,7 +37,7 @@ export default class ChatContainer extends Component {
   }
 
   updateTyping = () => {
-    console.log('setting typer')
+    //console.log('setting typer')
     let typingMaxTime = 2500 //ms
     if(this.props.connected) {
       if(!this.state.typing) {
@@ -54,6 +64,7 @@ export default class ChatContainer extends Component {
     return (
       <div className="wrapper">
         <ChatBox
+          endMessages= {el => this.endMessages = el}
           isTyping={ this.props.isTyping }
           messages={ this.props.messages }
           username={ this.props.username}/>

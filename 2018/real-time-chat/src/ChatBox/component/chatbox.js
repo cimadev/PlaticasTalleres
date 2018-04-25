@@ -11,11 +11,16 @@ const ChatBox = (props) => (
           return msg.userName === props.username ?
             <UserMessage key={ key } username={msg.userName} message={msg.msg} />
             : <Message key={ key } username={msg.userName} message={msg.msg} />
-
         })
       }
       <div className='flex-item'>
         {props.isTyping}
+      </div>
+      <div ref={props.endMessages} id='endOfMessages'>
+        <br />
+        <br />
+        <br />
+        <br />
       </div>
     </Row>
     <style jsx>{`
