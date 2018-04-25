@@ -96,9 +96,15 @@ export default class extends Component {
     })
   }
 
-  handleClose = () => {
+  handleClose = (open) => {
     this.setState({
       open: open
+    })
+  }
+
+  handleToogle = () => {
+    this.setState({
+      open: true
     })
   }
 

@@ -7,7 +7,7 @@ const style = {
 
 const DrawerApp = (props) => (
   <div>
-    <Drawer width={200} open={props.open} onChange={props.handleClose} right drawerStyle={style}>
+    <Drawer width={200} open={props.open} onChange={open => props.handleClose(open)} right drawerStyle={style}>
       {
         props.users.map((username, key) => {
           return (
