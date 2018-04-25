@@ -50,6 +50,7 @@ export default class extends Component {
         userCount: data.userCount,
         onlineUsers: data.onlineUsers
       })
+      console.log(`${data.userName} left this session`);
     })
     socket.on('new message', (data) => {
       console.log('new message arrived')

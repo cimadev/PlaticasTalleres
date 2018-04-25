@@ -20,7 +20,6 @@ exports = module.exports = (io, onlineUsers, userCount, msgDb) => {
         userCount
       })
     })
-    
     socket.on('disconnect', () => {
       if (addedUser) {
         --userCount
@@ -32,7 +31,6 @@ exports = module.exports = (io, onlineUsers, userCount, msgDb) => {
         })
       }
     })
-
     socket.on('new message', (data) => {
       if (!addedUser) return
       let newMsg = {
